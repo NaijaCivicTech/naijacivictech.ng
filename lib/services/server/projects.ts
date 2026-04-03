@@ -475,7 +475,9 @@ export async function listProjectsPage(
   } = params;
   const limit = Math.min(Math.max(1, Math.floor(rawLimit)), 100);
   const sort: ProjectListSort =
-    rawSort === "oldest" || rawSort === "votes" ? rawSort : "latest";
+    rawSort === "oldest" || rawSort === "latest" || rawSort === "votes"
+      ? rawSort
+      : "votes";
   const cursorDecoded = decodeCursor(rawCursor);
 
   const baseMatch =

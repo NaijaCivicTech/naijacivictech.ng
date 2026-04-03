@@ -36,7 +36,7 @@ export function useDirectoryProjectsInfinite(
   category: string,
   search: string,
   enabled = true,
-  sortMode: DirectoryFeedSort = "latest",
+  sortMode: DirectoryFeedSort = "votes",
 ) {
   const { status, viewerKey } = useViewerSession();
   const q = search.trim();
@@ -91,6 +91,7 @@ export function useHomeDirectoryPreview(enabled = true) {
       fetchProjectsListPage({
         scope: "directory",
         limit: HOME_DIRECTORY_LIMIT,
+        sort: "votes",
       }),
     enabled: enabled && status !== "loading",
     staleTime: 30_000,
@@ -105,7 +106,7 @@ export function useHomePipelinePreview(enabled = true) {
       fetchProjectsListPage({
         scope: "pipeline",
         limit: HOME_PIPELINE_LIMIT,
-        sort: "latest",
+        sort: "votes",
       }),
     enabled: enabled && status !== "loading",
     staleTime: 30_000,

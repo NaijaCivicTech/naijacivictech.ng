@@ -34,7 +34,7 @@ export function DirectoryBoard({ previewMaxCards }: DirectoryBoardProps = {}) {
   const previewQ = useHomeDirectoryPreview(isPreview);
   const [dirCat, setDirCat] = useState<string>("all");
   const [search, setSearch] = useState("");
-  const [dirSort, setDirSort] = useState<DirectoryFeedSort>("latest");
+  const [dirSort, setDirSort] = useState<DirectoryFeedSort>("votes");
   const sortControlId = useId();
   const infiniteQ = useDirectoryProjectsInfinite(
     dirCat,

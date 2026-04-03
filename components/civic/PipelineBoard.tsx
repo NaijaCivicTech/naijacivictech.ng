@@ -164,7 +164,7 @@ export function PipelineBoard({
   hideSort = false,
   stageCounts: stageCountsProp,
 }: PipelineBoardProps = {}) {
-  const [sortMode, setSortMode] = useState<PipelineSortMode>("latest");
+  const [sortMode, setSortMode] = useState<PipelineSortMode>("votes");
   const isEmbeddedHome =
     typeof maxCardsPerColumn === "number" && maxCardsPerColumn >= 0 && hideSort;
 

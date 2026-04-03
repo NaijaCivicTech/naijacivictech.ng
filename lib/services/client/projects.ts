@@ -36,9 +36,9 @@ export const civicProjectKeys = {
   pipeline: (viewerKey: string, sort: string) =>
     [...civicProjectKeys.all, "pipeline", viewerKey, sort] as const,
   homeDirectoryPreview: (viewerKey: string) =>
-    [...civicProjectKeys.all, "home-directory", viewerKey] as const,
+    [...civicProjectKeys.all, "home-directory", viewerKey, "votes"] as const,
   homePipelinePreview: (viewerKey: string) =>
-    [...civicProjectKeys.all, "home-pipeline", viewerKey] as const,
+    [...civicProjectKeys.all, "home-pipeline", viewerKey, "votes"] as const,
   detail: (viewerKey: string, id: string) =>
     [...civicProjectKeys.all, "detail", viewerKey, id] as const,
   comments: (projectId: string) =>
