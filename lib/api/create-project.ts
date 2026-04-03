@@ -4,7 +4,8 @@ import type {
   CreateProjectAuthContext,
 } from "@/data/create-project";
 import type { CivicProject, ListingStatus } from "@/data/types";
-import { COLOR_POOL, ICON_POOL } from "@/data/projects";
+import { pickRandomIconForCategory } from "@/data/project-icons";
+import { COLOR_POOL } from "@/data/projects";
 import { isValidEmail, normalizeEmail } from "@/lib/email";
 import { GITHUB_ORG_URL } from "@/lib/site-urls";
 import { insertProject, slugExists } from "@/lib/services/server/projects";
@@ -205,7 +206,7 @@ export async function createListingFromBody(
 
   const project = {
     slug,
-    icon: ICON_POOL[Math.floor(Math.random() * ICON_POOL.length)]!,
+    icon: pickRandomIconForCategory(body.category),
     name: body.name,
     description: tagline || description,
     category: body.category,
@@ -270,7 +271,7 @@ export async function createIdeaFromBody(
 
   const project = {
     slug,
-    icon: ICON_POOL[Math.floor(Math.random() * ICON_POOL.length)]!,
+    icon: pickRandomIconForCategory(body.category),
     name: body.title,
     description: body.solution,
     request: body.problem,

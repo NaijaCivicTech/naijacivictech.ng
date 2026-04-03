@@ -9,27 +9,4 @@ const C = [
   "#0D4A7A",
 ] as const;
 
-export const ICON_POOL = [
-  "🗳️",
-  "🏛️",
-  "⚡",
-  "💊",
-  "📋",
-  "🚨",
-  "🏥",
-  "📊",
-  "🎓",
-  "🌾",
-  "🗺️",
-  "🏗️",
-  "🧾",
-  "📡",
-  "🛣️",
-  "🌊",
-  "📚",
-  "💉",
-  "💡",
-  "🚿",
-] as const;
-
 export const COLOR_POOL = [...C] as string[];

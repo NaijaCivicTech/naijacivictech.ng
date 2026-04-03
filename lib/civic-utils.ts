@@ -1,7 +1,10 @@
 import { COLOR_POOL } from "@/data/projects";
 import type { CivicProject, ListingStatus, TeamRole } from "@/data/types";
 
-/** Values allowed in create forms (no "all"). Keep in sync with directory filters. */
+/**
+ * Values allowed in create forms (no "all"). Keep in sync with directory filters.
+ * When adding a category, add a matching pool in `data/project-icons.ts`.
+ */
 export const PROJECT_CATEGORY_OPTIONS = [
   "AI",
   "Agriculture & food",
