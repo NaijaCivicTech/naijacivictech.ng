@@ -1,6 +1,7 @@
 "use client";
 
 import { SiteFooter } from "@/components/civic/SiteFooter";
+import { GoogleLogoMark } from "@/components/icons/GoogleLogoMark";
 import { cn } from "@/lib/cn";
 import { signIn } from "next-auth/react";
 import Link from "next/link";
@@ -61,28 +62,28 @@ export function RegisterForm() {
   }
 
   return (
-    <div className="flex min-h-0 flex-1 flex-col">
-      <section className="mx-auto flex w-full max-w-[420px] flex-col px-10 py-16 max-md:px-5">
-        <div className="mb-2 text-[10px] font-semibold uppercase tracking-[0.12em] text-brand">
+    <div className='flex min-h-0 flex-1 flex-col'>
+      <section className='mx-auto flex w-full max-w-[420px] flex-col px-10 py-16 max-md:px-5'>
+        <div className='mb-2 text-[10px] font-semibold uppercase tracking-[0.12em] text-brand'>
           Account
         </div>
-        <h1 className="mb-2 font-display text-[26px] font-extrabold tracking-tight">
+        <h1 className='mb-2 font-display text-[26px] font-extrabold tracking-tight'>
           Create account
         </h1>
-        <p className="mb-8 text-[13px] text-muted">
+        <p className='mb-8 text-[13px] text-muted'>
           Use email and password or continue with Google. Passwords must be at
           least 10 characters.
         </p>
 
-        <form onSubmit={onSubmit} className="mb-6 space-y-4">
+        <form onSubmit={onSubmit} className='mb-6 space-y-4'>
           <div>
-            <label className={fieldLabel} htmlFor="reg-name">
+            <label className={fieldLabel} htmlFor='reg-name'>
               Name
             </label>
             <input
-              id="reg-name"
-              type="text"
-              autoComplete="name"
+              id='reg-name'
+              type='text'
+              autoComplete='name'
               required
               maxLength={120}
               className={fieldInput}
@@ -91,13 +92,13 @@ export function RegisterForm() {
             />
           </div>
           <div>
-            <label className={fieldLabel} htmlFor="reg-email">
+            <label className={fieldLabel} htmlFor='reg-email'>
               Email
             </label>
             <input
-              id="reg-email"
-              type="email"
-              autoComplete="email"
+              id='reg-email'
+              type='email'
+              autoComplete='email'
               required
               className={fieldInput}
               value={email}
@@ -105,13 +106,13 @@ export function RegisterForm() {
             />
           </div>
           <div>
-            <label className={fieldLabel} htmlFor="reg-password">
+            <label className={fieldLabel} htmlFor='reg-password'>
               Password
             </label>
             <input
-              id="reg-password"
-              type="password"
-              autoComplete="new-password"
+              id='reg-password'
+              type='password'
+              autoComplete='new-password'
               required
               minLength={10}
               maxLength={72}
@@ -121,38 +122,39 @@ export function RegisterForm() {
             />
           </div>
           {error ? (
-            <p className={fieldError} role="alert">
+            <p className={fieldError} role='alert'>
               {error}
             </p>
           ) : null}
-          <button type="submit" className={btnPrimary} disabled={pending}>
+          <button type='submit' className={btnPrimary} disabled={pending}>
             {pending ? "Creating…" : "Register"}
           </button>
         </form>
 
-        <div className="relative mb-6 text-center text-[11px] text-muted">
-          <span className="relative z-[1] bg-paper px-2">or</span>
+        <div className='relative mb-6 text-center text-[11px] text-muted'>
+          <span className='relative z-1 bg-paper px-2'>or</span>
           <span
-            className="absolute left-0 right-0 top-1/2 z-0 h-px -translate-y-1/2 bg-line"
+            className='absolute left-0 right-0 top-1/2 z-0 h-px -translate-y-1/2 bg-line'
             aria-hidden
           />
         </div>
 
         <button
-          type="button"
+          type='button'
           className={cn(
-            "mb-8 w-full cursor-pointer rounded-md border-[1.5px] border-line bg-paper py-3 font-sans text-[13px] font-medium text-ink transition-colors hover:bg-brand-soft",
+            "mb-8 flex w-full cursor-pointer items-center justify-center gap-1 rounded-md border-[1.5px] border-line bg-paper py-3 font-sans text-[13px] font-medium text-ink transition-colors hover:bg-brand-soft",
           )}
           onClick={() => signIn("google", { callbackUrl })}
         >
+          <GoogleLogoMark size={22} />
           Continue with Google
         </button>
 
-        <p className="text-center text-[13px] text-muted">
+        <p className='text-center text-[13px] text-muted'>
           Already have an account?{" "}
           <Link
-            href="/login"
-            className="font-medium text-brand no-underline hover:underline"
+            href='/login'
+            className='font-medium text-brand no-underline hover:underline'
           >
             Sign in
           </Link>

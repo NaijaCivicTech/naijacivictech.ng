@@ -15,9 +15,11 @@ export function useCivicVote() {
   const canVote = status === "authenticated";
 
   const { mutate: runVote } = useMutation({
-    mutationFn: ({ id, delta }: { id: string; delta: 1 | -1 }) =>
-      postVote(id, delta),
-    onMutate: async ({ id, delta }) => {
+    mutationFn: ({ id }: { id: string }) => postVote(id),
+    onMutate: async ({ id }) => {
+      const p = findProjectInCaches(queryClient, id);
+      const hasVoted = p?.viewerHasVoted === true;
+      const delta = hasVoted ? -1 : 1;
       await queryClient.cancelQueries({ queryKey: civicProjectKeys.all });
       const previousEntries = queryClient.getQueriesData({
         queryKey: civicProjectKeys.all,
@@ -25,8 +27,8 @@ export function useCivicVote() {
       patchProjectVotesInCaches(
         queryClient,
         id,
-        (findProjectInCaches(queryClient, id)?.votes ?? 0) + delta,
-        delta === 1,
+        (p?.votes ?? 0) + delta,
+        !hasVoted,
       );
       return { previousEntries };
     },
@@ -48,11 +50,9 @@ export function useCivicVote() {
   const toggleVote = useCallback(
     (id: string) => {
       if (!canVote) return;
-      const p = findProjectInCaches(queryClient, id);
-      const hasVoted = p?.viewerHasVoted === true;
-      runVote({ id, delta: hasVoted ? -1 : 1 });
+      runVote({ id });
     },
-    [canVote, queryClient, runVote],
+    [canVote, runVote],
   );
 
   return { canVote, toggleVote };

@@ -15,21 +15,6 @@ export async function POST(request: Request, context: RouteContext) {
     return NextResponse.json({ error: "Invalid project id" }, { status: 400 });
   }
 
-  let delta: unknown;
-  try {
-    const body = await request.json();
-    delta = body?.delta;
-  } catch {
-    return NextResponse.json({ error: "Invalid JSON" }, { status: 400 });
-  }
-
-  if (delta !== 1 && delta !== -1) {
-    return NextResponse.json(
-      { error: "delta must be 1 or -1" },
-      { status: 400 },
-    );
-  }
-
   const session = await auth();
   const userId = session?.user?.id;
   if (!userId) {
@@ -52,16 +37,9 @@ export async function POST(request: Request, context: RouteContext) {
   }
 
   try {
-    const result = await toggleVoteForUser(idParam, userId, delta);
+    const result = await toggleVoteForUser(idParam, userId);
     if (!result.ok) {
-      if (result.reason === "not_found") {
-        return NextResponse.json({ error: "Project not found" }, { status: 404 });
-      }
-      const message =
-        result.reason === "already_voted"
-          ? "You already upvoted this project"
-          : "You have not upvoted this project";
-      return NextResponse.json({ error: message }, { status: 409 });
+      return NextResponse.json({ error: "Project not found" }, { status: 404 });
     }
     return NextResponse.json({
       votes: result.votes,

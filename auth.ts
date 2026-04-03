@@ -18,10 +18,7 @@ const authSecret =
     ? "dev-only-insecure-auth-secret-set-AUTH_SECRET-in-env"
     : undefined);
 
-async function attachAdminToToken(token: {
-  sub?: string;
-  isAdmin?: boolean;
-}) {
+async function attachAdminToToken(token: { sub?: string; isAdmin?: boolean }) {
   if (!token.sub) {
     token.isAdmin = false;
     return;
@@ -40,6 +37,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
           Google({
             clientId: googleClientId,
             clientSecret: googleClientSecret,
+            allowDangerousEmailAccountLinking: true,
           }),
         ]
       : []),

@@ -1,6 +1,7 @@
 "use client";
 
 import { SiteFooter } from "@/components/civic/SiteFooter";
+import { GoogleLogoMark } from "@/components/icons/GoogleLogoMark";
 import { cn } from "@/lib/cn";
 import { signIn } from "next-auth/react";
 import Link from "next/link";
@@ -98,7 +99,7 @@ export function LoginForm() {
         </form>
 
         <div className='relative mb-6 text-center text-[11px] text-muted'>
-          <span className='relative z-[1] bg-paper px-2'>or</span>
+          <span className='relative z-1 bg-paper px-2'>or</span>
           <span
             className='absolute left-0 right-0 top-1/2 z-0 h-px -translate-y-1/2 bg-line'
             aria-hidden
@@ -108,10 +109,11 @@ export function LoginForm() {
         <button
           type='button'
           className={cn(
-            "mb-8 w-full cursor-pointer rounded-md border-[1.5px] border-line bg-paper py-3 font-sans text-[13px] font-medium text-ink transition-colors hover:bg-brand-soft",
+            "mb-8 flex w-full cursor-pointer items-center justify-center gap-1 rounded-md border-[1.5px] border-line bg-paper py-3 font-sans text-[13px] font-medium text-ink transition-colors hover:bg-brand-soft",
           )}
           onClick={() => signIn("google", { callbackUrl })}
         >
+          <GoogleLogoMark size={22} />
           Continue with Google
         </button>
 

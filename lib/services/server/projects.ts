@@ -766,85 +766,56 @@ export async function insertProject(
 
 export type ToggleVoteResult =
   | { ok: true; votes: number; viewerHasVoted: boolean }
-  | { ok: false; reason: "not_found" | "already_voted" | "not_voted" };
+  | { ok: false; reason: "not_found" };
 
+/** Add vote if absent, else remove — one round-trip friendly to stale client cache. */
 export async function toggleVoteForUser(
   projectId: string,
   userId: string,
-  delta: 1 | -1,
 ): Promise<ToggleVoteResult> {
   const oid = parseProjectObjectId(projectId);
   if (!oid) return { ok: false, reason: "not_found" };
   await connectMongoose();
 
-  if (delta === 1) {
-    const res = await ProjectModel.findOneAndUpdate(
-      {
-        $and: [
-          { _id: oid },
-          PUBLIC_MATCH,
-          { voterIds: { $nin: [userId] } },
-        ],
-      },
-      { $push: { voterIds: userId }, $inc: { votes: 1 } },
-      { new: true },
-    )
-      .lean()
-      .exec();
-    if (!res) {
-      const snap = await ProjectModel.findById(oid)
-        .select("voterIds")
-        .lean()
-        .exec();
-      if (!snap) return { ok: false, reason: "not_found" };
-      if (!(await isPublicProject(oid))) return { ok: false, reason: "not_found" };
-      const voterIds = Array.isArray((snap as { voterIds?: unknown }).voterIds)
-        ? ((snap as { voterIds: unknown[] }).voterIds as unknown[]).filter(
-            (x): x is string => typeof x === "string",
-          )
-        : [];
-      if (voterIds.includes(userId)) {
-        return { ok: false, reason: "already_voted" };
-      }
-      return { ok: false, reason: "not_found" };
-    }
-    const votes = typeof res.votes === "number" ? res.votes : 0;
-    return { ok: true, votes, viewerHasVoted: true };
-  }
-
-  const res = await ProjectModel.findOneAndUpdate(
+  const addRes = await ProjectModel.findOneAndUpdate(
     {
       $and: [
         { _id: oid },
         PUBLIC_MATCH,
-        { voterIds: userId },
-        { votes: { $gte: 1 } },
+        { voterIds: { $nin: [userId] } },
       ],
+    },
+    { $push: { voterIds: userId }, $inc: { votes: 1 } },
+    { new: true },
+  )
+    .lean()
+    .exec();
+
+  if (addRes) {
+    const votes = typeof addRes.votes === "number" ? addRes.votes : 0;
+    return { ok: true, votes, viewerHasVoted: true };
+  }
+
+  const removeRes = await ProjectModel.findOneAndUpdate(
+    {
+      $and: [{ _id: oid }, PUBLIC_MATCH, { voterIds: userId }],
     },
     { $pull: { voterIds: userId }, $inc: { votes: -1 } },
     { new: true },
   )
     .lean()
     .exec();
-  if (!res) {
-    const snap = await ProjectModel.findById(oid)
-      .select("voterIds")
-      .lean()
-      .exec();
-    if (!snap) return { ok: false, reason: "not_found" };
-    if (!(await isPublicProject(oid))) return { ok: false, reason: "not_found" };
-    const voterIds = Array.isArray((snap as { voterIds?: unknown }).voterIds)
-      ? ((snap as { voterIds: unknown[] }).voterIds as unknown[]).filter(
-          (x): x is string => typeof x === "string",
-        )
-      : [];
-    if (!voterIds.includes(userId)) {
-      return { ok: false, reason: "not_voted" };
-    }
+
+  if (removeRes) {
+    const raw = typeof removeRes.votes === "number" ? removeRes.votes : 0;
+    const votes = Math.max(0, raw);
+    return { ok: true, votes, viewerHasVoted: false };
+  }
+
+  if (!(await isPublicProject(oid))) {
     return { ok: false, reason: "not_found" };
   }
-  const votes = typeof res.votes === "number" ? res.votes : 0;
-  return { ok: true, votes, viewerHasVoted: false };
+  return { ok: false, reason: "not_found" };
 }
 
 export type PushTeamMemberResult =

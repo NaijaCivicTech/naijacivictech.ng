@@ -154,13 +154,12 @@ export async function fetchProjectById(id: string): Promise<CivicProject> {
 
 export async function postVote(
   id: string,
-  delta: 1 | -1,
 ): Promise<{ id: string; votes: number; viewerHasVoted: boolean }> {
   const res = await fetch(`/api/projects/${id}/vote`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     credentials: "include",
-    body: JSON.stringify({ delta }),
+    body: JSON.stringify({}),
   });
   const data = (await res.json()) as {
     votes?: number;
