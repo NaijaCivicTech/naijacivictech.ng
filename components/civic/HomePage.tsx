@@ -43,7 +43,7 @@ export function HomePage() {
             </span>
           </h1>
           <p className='mb-10 max-w-[480px] text-base font-light leading-[1.75] text-muted'>
-            A community of Nigerian developers building open-source tools and
+            A community of Nigerian in tech building open-source tools and
             prototypes to solve real Nigerian problems, together.
           </p>
           {projectsError ? (
