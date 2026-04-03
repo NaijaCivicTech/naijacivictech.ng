@@ -1,4 +1,6 @@
 import { CivicModals } from "@/components/civic/CivicModals";
+import { PolitilogProposeModal } from "@/components/civic/PolitilogProposeModal";
+import { PolitilogRateModal } from "@/components/civic/PolitilogRateModal";
 import { CivicSessionProvider } from "@/components/civic/CivicSessionProvider";
 import { QueryProvider } from "@/components/civic/QueryProvider";
 import { SiteHeader } from "@/components/civic/SiteHeader";
@@ -67,6 +69,8 @@ export default function RootLayout({
                 {children}
               </main>
               <CivicModals />
+              <PolitilogRateModal />
+              <PolitilogProposeModal />
             </div>
           </CivicSessionProvider>
         </QueryProvider>

@@ -38,13 +38,26 @@ export function HomePage() {
             Building the tools
             <br />
             <em className='not-italic text-brand'>Nigeria</em>{" "}
-            <span className='relative inline-block after:absolute after:bottom-[3px] after:left-0 after:right-0 after:z-[-1] after:block after:h-[5px] after:-skew-x-[3deg] after:bg-sun'>
+            <span className='relative inline-block after:absolute after:bottom-[3px] after:left-0 after:right-0 after:z-1 after:block after:h-[5px] after:-skew-x-[3deg] after:bg-sun'>
               deserves
             </span>
           </h1>
           <p className='mb-10 max-w-[480px] text-base font-light leading-[1.75] text-muted'>
             A community of Nigerian in tech building open-source tools and
             prototypes to solve real Nigerian problems, together.
+          </p>
+          <p className='mb-8 max-w-[520px] border-s-2 border-brand/35 ps-3 text-[13px] leading-relaxed text-ink/90'>
+            <span className='font-semibold text-ink'>Trending on X</span>
+            {" — "}
+            <a
+              href='https://x.com/i/trending/2040023409233424579'
+              target='_blank'
+              rel='noopener noreferrer'
+              className='font-semibold text-brand underline-offset-2 hover:underline'
+            >
+              Join the conversation
+            </a>{" "}
+            about crowdsourced civic tools for Nigeria.
           </p>
           {projectsError ? (
             <p className='mb-8 rounded-lg border border-flame/30 bg-flame-soft px-4 py-3 text-sm text-flame'>

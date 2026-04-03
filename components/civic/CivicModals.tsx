@@ -10,6 +10,7 @@ import {
   useSubmitListingMutation,
 } from "@/hooks/use-civic-mutations";
 import { useCivicProjectDetail } from "@/hooks/use-civic-project-detail";
+import { lockBodyScroll, unlockBodyScroll } from "@/lib/body-scroll-lock";
 import { civicModalStore } from "@/lib/civic-modal-store";
 import {
   PROJECT_CATEGORY_OPTIONS,
@@ -52,7 +53,7 @@ function overlayShell(open: boolean, children: ReactNode, id?: string) {
       id={id}
       role='presentation'
       className={cn(
-        "fixed inset-0 z-[400] items-center justify-center p-4",
+        "fixed inset-0 z-400 items-center justify-center p-4",
         open ? "flex" : "hidden",
       )}
     >
@@ -177,8 +178,17 @@ export function CivicModals() {
     return () => window.removeEventListener("keydown", onKey);
   }, [handleClose]);
 
+  const anyModalOpen = modal !== "none";
+  useEffect(() => {
+    if (!anyModalOpen) return;
+    lockBodyScroll();
+    return () => {
+      unlockBodyScroll();
+    };
+  }, [anyModalOpen]);
+
   const modalBase =
-    "relative z-[1] max-h-[90vh] w-full max-w-[580px] animate-civic-modal overflow-y-auto rounded-xl bg-card p-8";
+    "relative z-1 max-h-[90vh] w-full max-w-[580px] animate-civic-modal overflow-y-auto rounded-xl bg-card p-8";
   const closeBtn =
     "absolute right-4 top-4 cursor-pointer border-none bg-transparent p-1 text-lg leading-none text-muted";
 

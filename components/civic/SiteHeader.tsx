@@ -158,7 +158,8 @@ export function SiteHeader() {
   }, []);
 
   useEffect(() => {
-    closeMenu();
+    const t = window.setTimeout(() => closeMenu(), 0);
+    return () => window.clearTimeout(t);
   }, [pathname, closeMenu]);
 
   useEffect(() => {
@@ -262,6 +263,16 @@ export function SiteHeader() {
               onClick={closeMenu}
             >
               Directory
+            </Link>
+            <Link
+              href='/politilog'
+              className={cn(
+                navLinkTopBase,
+                topNavActive(pathname === "/politilog"),
+              )}
+              onClick={closeMenu}
+            >
+              PolitiLog
             </Link>
             <Link
               href='/about'
@@ -384,6 +395,13 @@ export function SiteHeader() {
             onClick={closeMenu}
           >
             Directory
+          </Link>
+          <Link
+            href='/politilog'
+            className={mobileMainNavClass(pathname === "/politilog")}
+            onClick={closeMenu}
+          >
+            PolitiLog
           </Link>
           <Link
             href='/about'

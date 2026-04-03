@@ -6,8 +6,9 @@ export function SiteFooter({ short }: { short?: boolean }) {
   return (
     <footer
       className={cn(
-        "relative z-1 mt-auto flex w-full shrink-0 flex-wrap items-center justify-between gap-4 border-t border-line bg-paper px-10 py-7",
-        "max-md:flex-col max-md:items-start max-md:px-5 max-md:py-5",
+        "relative z-1 mt-auto flex w-full shrink-0 flex-wrap items-center justify-between gap-4 border-t border-line bg-paper px-10",
+        short ? "py-5 max-md:py-4" : "py-7 max-md:py-5",
+        "max-md:flex-col max-md:items-start max-md:px-5",
       )}
     >
       <div className='font-display text-sm font-extrabold'>NaijaCivicTech</div>

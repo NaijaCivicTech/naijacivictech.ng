@@ -1,8 +1,8 @@
 "use client";
 
+import { cn } from "@/lib/cn";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { cn } from "@/lib/cn";
 
 const TABS = [
   { href: "/", label: "Overview", match: (p: string) => p === "/" },
@@ -27,7 +27,7 @@ export function SiteTabs() {
   const pathname = usePathname();
 
   return (
-    <div className="relative z-[1] flex w-full bg-ink">
+    <div className='relative z-1 flex w-full bg-ink'>
       {TABS.map((tab) => (
         <Link
           key={tab.href}
