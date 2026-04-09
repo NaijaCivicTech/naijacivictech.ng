@@ -90,13 +90,13 @@ function PipelineCard({
           {p.name}
         </div>
         <div className='mb-1.5 flex w-full items-center justify-between gap-2 text-[10px]'>
-          <span className='shrink-0 text-muted'>
+          <span className='text-muted'>
             Posted {formatPostedAt(p.postedAt)}
           </span>
         </div>
         {p.request?.trim() ? (
           <div className='mb-2 rounded border border-line/70 bg-paper/60 px-2 py-1.5'>
-            <div className='text-[9px] font-semibold uppercase tracking-wider text-muted'>
+            <div className='text-[9px] wrap-break-word font-semibold uppercase tracking-wider text-muted'>
               Request
             </div>
             <p className='line-clamp-5 text-[11px] leading-snug text-ink'>
@@ -111,19 +111,18 @@ function PipelineCard({
             image={p.authorImage}
           />
           <span
-            className='min-w-0 truncate text-[10px] font-medium text-ink/80'
-            title={p.authorName}
+            className='min-w-0 wrap-break-word text-[10px] font-medium text-ink/80'
           >
             {p.authorName}
           </span>
         </div>
       </button>
 
-      <div className='mt-1 flex w-full items-center justify-between gap-2 border-t border-line pt-2'>
+      <div className='mt-1 flex flex-wrap w-full items-center justify-between gap-2 border-t border-line pt-2'>
         <span className='inline-flex shrink-0 items-center rounded-full border border-line bg-paper px-[7px] py-0.5 text-[10px] font-medium uppercase tracking-wide text-muted'>
           {p.category}
         </span>
-        <div className='flex shrink-0 items-center gap-1.5'>
+        <div className='flex flex-wrap items-center gap-1.5'>
           <span
             className='rounded border border-line bg-transparent px-[7px] py-0.5 font-sans text-[11px] font-semibold tabular-nums text-muted'
             title='Comments on this project'
@@ -312,7 +311,7 @@ export function PipelineBoard({
               </div>
               <button
                 type='button'
-                className='mb-4 flex min-h-11 w-full shrink-0 items-center justify-between gap-2 rounded-md py-1 text-left outline-none transition-colors hover:bg-paper/40 focus-visible:ring-2 focus-visible:ring-sun focus-visible:ring-offset-2 focus-visible:ring-offset-paper2 lg:hidden'
+                className='mb-4 flex flex-wrap min-h-11 w-full shrink-0 items-center justify-between gap-2 rounded-md py-1 text-left outline-none transition-colors hover:bg-paper/40 focus-visible:ring-2 focus-visible:ring-sun focus-visible:ring-offset-2 focus-visible:ring-offset-paper2 lg:hidden'
                 aria-expanded={openMobile}
                 aria-controls={panelId}
                 aria-label={
