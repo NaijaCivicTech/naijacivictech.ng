@@ -264,8 +264,7 @@ export function DirectoryBoard({ previewMaxCards }: DirectoryBoardProps = {}) {
                   <span>{t.authorName}</span>
                 </div>
                 <div className='flex flex-wrap items-center gap-2'>
-                  <div className='flex gap-2'>
-                    {t.github ? (
+                  {t.github ? (
                       <a
                         href={t.github}
                         target='_blank'
@@ -285,7 +284,6 @@ export function DirectoryBoard({ previewMaxCards }: DirectoryBoardProps = {}) {
                         ↗ Live
                       </a>
                     ) : null}
-                  </div>
                   <button
                     type='button'
                     disabled
