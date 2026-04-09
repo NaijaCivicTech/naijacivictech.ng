@@ -1,4 +1,4 @@
-import { PolitilogMyRatingsView } from "@/components/civic/PolitilogMyRatingsView";
+import { PolitilogMyRatingsView } from "@/features/politilog/components/PolitilogMyRatingsView";
 import { SiteFooter } from "@/components/civic/SiteFooter";
 import type { Metadata } from "next";
 

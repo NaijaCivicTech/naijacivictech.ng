@@ -1,3 +1,13 @@
+export { AcademicInstitutionModel } from "./AcademicInstitution";
+export { NigeriaGeopoliticalZoneModel } from "./NigeriaGeopoliticalZone";
+export { NigeriaLgaModel } from "./NigeriaLga";
+export { NigeriaStateModel } from "./NigeriaState";
+export { NigeriaWardModel } from "./NigeriaWard";
+export { PoliticalOfficeModel } from "./PoliticalOffice";
+export { PoliticalPartyModel } from "./PoliticalParty";
+export { PoliticianTimelineSegmentModel } from "./PoliticianTimelineSegment";
 export { ProjectCommentModel } from "./ProjectComment";
 export { ProjectModel } from "./Project";
+export { ReligionModel } from "./Religion";
 export { UserModel } from "./User";
+export { UserResidenceModel } from "./UserResidence";

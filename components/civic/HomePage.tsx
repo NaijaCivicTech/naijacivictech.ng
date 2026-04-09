@@ -4,9 +4,9 @@ import { useCivicProjectsStats } from "@/hooks/use-civic-feeds";
 import { civicModalStore } from "@/lib/civic-modal-store";
 import { cn } from "@/lib/cn";
 import Link from "next/link";
-import { DirectoryBoard } from "./DirectoryBoard";
+import { DirectoryBoard } from "@/features/civic-projects/components/DirectoryBoard";
 import { MarqueeBand } from "./MarqueeBand";
-import { PipelineBoard } from "./PipelineBoard";
+import { PipelineBoard } from "@/features/civic-projects/components/PipelineBoard";
 import { SiteFooter } from "./SiteFooter";
 
 const btn =

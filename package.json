@@ -6,7 +6,12 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "geo:normalize-seed": "tsx scripts/normalize-nigeria-seed-shape.ts",
+    "geo:embed-zones": "tsx scripts/embed-geopolitical-zones-in-full-json.ts",
+    "db:seed:zones": "tsx scripts/seed-nigeria-zones.ts",
+    "db:seed:geo": "tsx scripts/seed-nigeria-geo.ts",
+    "db:seed:political-offices": "tsx scripts/seed-political-offices.ts"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.96.1",
@@ -29,6 +34,7 @@
     "@types/react-dom": "^19",
     "dotenv": "^17.4.0",
     "eslint": "^9",
+    "tsx": "^4.21.0",
     "eslint-config-next": "16.2.2",
     "tailwindcss": "^4",
     "typescript": "^5"

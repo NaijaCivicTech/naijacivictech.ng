@@ -1,4 +1,4 @@
-import { PolitilogBoard } from "@/components/civic/PolitilogBoard";
+import { PolitilogBoard } from "@/features/politilog/components/PolitilogBoard";
 import { SiteFooter } from "@/components/civic/SiteFooter";
 
 export default function PolitilogPage() {

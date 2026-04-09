@@ -64,6 +64,15 @@ export type ProjectComment = {
   userId: string;
 };
 
+/** Who can see a given user profile facet (see User `profileVisibility`). */
+export const PROFILE_FIELD_VISIBILITY = [
+  "public",
+  "members",
+  "private",
+] as const;
+export type ProfileFieldVisibility =
+  (typeof PROFILE_FIELD_VISIBILITY)[number];
+
 export type {
   CreateIdeaBody,
   CreateIdeaPayload,

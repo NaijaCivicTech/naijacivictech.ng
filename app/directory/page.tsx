@@ -1,6 +1,6 @@
 "use client";
 
-import { DirectoryBoard } from "@/components/civic/DirectoryBoard";
+import { DirectoryBoard } from "@/features/civic-projects/components/DirectoryBoard";
 import { SiteFooter } from "@/components/civic/SiteFooter";
 import { civicModalStore } from "@/lib/civic-modal-store";
 import { cn } from "@/lib/cn";

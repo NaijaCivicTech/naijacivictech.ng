@@ -1,11 +1,11 @@
-import { PolitilogProfileView } from "@/components/civic/PolitilogProfileView";
+import { PolitilogProfileView } from "@/features/politilog/components/PolitilogProfileView";
 import { SiteFooter } from "@/components/civic/SiteFooter";
 import {
   ALL_POLITICIANS,
   getPoliticianById,
   officeLabel,
-} from "@/lib/politilog-data";
-import { getTimelineForPolitician } from "@/lib/politilog-timeline";
+} from "@/features/politilog/lib/politilog-data";
+import { getTimelineForPolitician } from "@/features/politilog/lib/politilog-timeline";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 

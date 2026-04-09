@@ -1,6 +1,6 @@
 import { CivicModals } from "@/components/civic/CivicModals";
-import { PolitilogProposeModal } from "@/components/civic/PolitilogProposeModal";
-import { PolitilogRateModal } from "@/components/civic/PolitilogRateModal";
+import { PolitilogProposeModal } from "@/features/politilog/components/PolitilogProposeModal";
+import { PolitilogRateModal } from "@/features/politilog/components/PolitilogRateModal";
 import { CivicSessionProvider } from "@/components/civic/CivicSessionProvider";
 import { QueryProvider } from "@/components/civic/QueryProvider";
 import { SiteHeader } from "@/components/civic/SiteHeader";

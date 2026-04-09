@@ -1,6 +1,6 @@
 "use client";
 
-import { PipelineBoard } from "@/components/civic/PipelineBoard";
+import { PipelineBoard } from "@/features/civic-projects/components/PipelineBoard";
 import { SiteFooter } from "@/components/civic/SiteFooter";
 import { useCivicProjectsStats } from "@/hooks/use-civic-feeds";
 import { civicModalStore } from "@/lib/civic-modal-store";
