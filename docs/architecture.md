@@ -21,16 +21,6 @@ Naija Civic Tech treats **Nigeria state → LGA → ward** as the **common geogr
 
 Not every feature must require all four; some may only use **state + LGA**. Optional geo on cross-cutting features (e.g. project directory) is fine until product needs filters.
 
-## Data and code
-
-| Piece | Location |
-| --- | --- |
-| Canonical geo seed | `seeds/full.json` |
-| Mongo models | `NigeriaState`, `NigeriaLga`, `NigeriaWard` in `lib/models/` |
-| DB seed script | `pnpm run db:seed:geo` → `scripts/seed-nigeria-geo.ts` |
-| Read-only app meta from JSON | `data/nigeria-state-meta.ts` (imports seed JSON; prefer DB/API when wired) |
-| User ↔ place history | `UserResidence` (`user_residences`), `User.profileVisibility` for what others may see |
-
 ## Feature modules
 
 Vertical slices live under `features/` (see `features/README.md`). Each feature should document how it maps to **national / state / LGA / ward** in its own spec under `feature-plan/` when relevant.

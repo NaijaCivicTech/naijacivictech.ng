@@ -1,40 +1,36 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Naija Civic Tech
+
+Open-source civic platform for Nigeria: multiple tools on one site, with a **shared geographic layer** (state → LGA → ward) and a bias toward **public, auditable data**, so civic work compounds instead of living in isolated apps.
+
+**Why it exists:** Nigeria has many people building civic tech; this project is a **working platform** for coordination, discovery, and transparent civic information—not a manifesto.
+
+For principles and framing, see the in-app [About](https://naijacivictech.ng/about) page (or `app/about/page.tsx` when running locally).
+
+## How this works
+
+| Area | What it does |
+| --- | --- |
+| **Features** | Each product is a vertical slice under `features/<name>/`, with thin routes in `app/<feature>/` (for example PolitiLog: offices, ratings, and related flows). New tools follow the same pattern. Planned slices and specs live in `feature-plan/` (for example Fuel Watch); see [features/README.md](./features/README.md). |
+| **Directory and pipeline** | A **civic project directory** and **pipeline** on the home page and `/directory` / `/pipeline` help people discover existing tools and move ideas from suggestion toward live (`features/civic-projects`). |
+| **Geo architecture and data exploration** | Nigeria **state → LGA → ward** is the shared geographic spine for place-based data and UI. **Exploration** and office-related surfaces live under `app/geo` and `features/geo`. The data model and how features attach to it are in [docs/architecture.md](./docs/architecture.md). |
 
 ## Architecture
 
-Geography (**state → LGA → ward**) is the shared spine for place-based civic features. See [docs/architecture.md](./docs/architecture.md).
+Deeper notes on the geographic index, data layer, and scope levels: [docs/architecture.md](./docs/architecture.md).
 
-## Getting Started
+## Tech stack
 
-First, run the development server:
+Next.js, React, TypeScript, Tailwind CSS, MongoDB (Mongoose), NextAuth.
+
+## Getting started
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000). The UI hot-reloads as you edit files.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Contributing
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+See [CONTRIBUTING.md](./CONTRIBUTING.md).
